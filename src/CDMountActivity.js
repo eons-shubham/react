@@ -3,29 +3,29 @@ import React from 'react'
 
 export default class CDMount extends React.Component{
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
-            email: "",
+            email: ""
         }
     }
 
-    fetchApi = async () => {
+    fetchAPI = async () => {
         const URL = `https://reqres.in/api/users/1`;
-        const response = await axios.get(URL);
-        this.setState( (state, props) => {
+        const response = await axios(URL);
+        this.setState ( (state, props) => {
             return { email: response.data.data.email }
         } )
     }
 
     componentDidMount(){
-        this.fetchApi();
+        this.fetchAPI();
     }
 
     render(){
-        return (
-            <div>
-                <h2>{this.state.email}</h2>
-            </div>
+        return(
+            <>
+                <h3>{this.state.email}</h3>
+            </>
         )
     }
 }
