@@ -1,34 +1,40 @@
-import React from 'react';
+import React from "react";
+import axios from "axios";
+import Page from "./Page.js";
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 10,
+      id: ""
     };
   }
 
-  inc = () => {
+  update = (e) => {
     this.setState((state, props) => {
-      return { value: state.value + props.diff };
-    });
-  };
-
-  dec = () => {
-    this.setState((state, props) => {
-      return { value: state.value - props.diff };
+      return { id: e.target.value };
     });
   };
 
   render() {
     return (
       <div>
-        <h1>{this.state.value}</h1>
-        <button onClick={this.inc}>+{this.props.diff}</button>
-        <button onClick={this.dec}>-{this.props.diff}</button>
+        <h3>{this.state.id}</h3>
+        <button value={1} onClick={this.update}>
+          1
+        </button>
+        <button value={2} onClick={this.update}>
+          2
+        </button>
+        <button value={3} onClick={this.update}>
+          3
+        </button>
+        <button value={100} onClick={this.update}>
+          100
+        </button>
+
+        <Page id={this.state.id} />
       </div>
     );
   }
 }
-
-export default App;

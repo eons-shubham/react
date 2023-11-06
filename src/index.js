@@ -1,22 +1,9 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './app.js';
-import Form from './form.js'
-import CDMount from './CDMountActivity.js';
-import CDUpdate from './CDUpdateActivity.js';
-import StockData from './StockData.js';
+import React from "react";
+import { createRoot } from "react-dom/client";
 
-class UI extends React.Component {
+import App from "./App";
 
-  render() {
-    return (
-      <div>
-        <StockData />
-      </div>
-    );
-  }
-}
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
-const element = document.getElementById('root');
-const root = createRoot(element);
-root.render(<UI />);
+root.render(<App />);
