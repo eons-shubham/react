@@ -7,6 +7,7 @@ import VideoCard from "./VideoCard";
 export default function VideoSearcher() {
   const [searchText, setSearchText] = useState("");
   const [videos, setVideos] = useState([]);
+  const [debounceTimer, setDebounceTimer] = useState(0);
 
   const APICall = async (searchText) => {
     let URL = `https://content-xflix-backend.azurewebsites.net/v1/videos`;
@@ -22,7 +23,14 @@ export default function VideoSearcher() {
   };
 
   useEffect(() => {
-    APICall(searchText);
+    if (debounceTimer !== 0) {
+      clearTimeout(debounceTimer);
+    }
+    let timerId = setTimeout(() => {
+      APICall(searchText);
+    }, 800);
+
+    setDebounceTimer(timerId);
   }, [searchText]);
 
   return (
