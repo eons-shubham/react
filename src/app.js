@@ -1,34 +1,12 @@
-import React from 'react';
+import React from "react";
+import Weather from "./Weather";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 10,
-    };
-  }
-
-  inc = () => {
-    this.setState((state, props) => {
-      return { value: state.value + props.diff };
-    });
-  };
-
-  dec = () => {
-    this.setState((state, props) => {
-      return { value: state.value - props.diff };
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <h1>{this.state.value}</h1>
-        <button onClick={this.inc}>+{this.props.diff}</button>
-        <button onClick={this.dec}>-{this.props.diff}</button>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <>
+      <Weather />
+    </>
+  );
 }
 
 export default App;
